@@ -44,3 +44,7 @@ export const calculatePercentageChange = (
     ? "0%"
     : (((current - previous) / previous) * 100).toFixed(2) + "%";
 };
+
+export const minifyAddress = (address: string) => {
+  return `${address.slice(0, 6)}...${address.slice(-6)}`;
+};

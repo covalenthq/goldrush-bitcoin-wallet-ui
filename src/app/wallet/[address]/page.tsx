@@ -1,7 +1,8 @@
 "use client";
 
-import { AddressCard, TransactionsList } from "@covalenthq/goldrush-kit";
-import React, { useEffect, useState } from "react";
+import { AddressCard } from "@covalenthq/goldrush-kit";
+import React, { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { GOLDRUSH_API_KEY } from "@/utils/constants/helpers";
 import { getAddressType } from "@/utils/functions/helper";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,7 +17,9 @@ const WalletDashboard = ({
     address: string;
   };
 }) => {
-  const [balanceData, setBalanceData] = useState<any>(null);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const initialTab = searchParams.get("tab") ?? "balances";
 
   const handleFetchWalletBalance = async () => {
     if (!params.address || !GOLDRUSH_API_KEY) return;
@@ -40,8 +43,13 @@ const WalletDashboard = ({
     handleFetchWalletBalance();
   }, [params.address]);
 
+  // Function to handle tab change and update URL
+  const handleTabChange = (value: string) => {
+    router.push(`/wallet/${params.address}?tab=${value}`);
+  };
+
   return (
-    <Tabs defaultValue="balances">
+    <Tabs value={initialTab} onValueChange={handleTabChange}>
       <div className="flex w-full container items-start gap-4">
         <div className="flex flex-col gap-8">
           <AddressCard address={params.address} avatar={{}} />
