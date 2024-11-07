@@ -43,7 +43,6 @@ const WalletDashboard = ({
     handleFetchWalletBalance();
   }, [params.address]);
 
-  // Function to handle tab change and update URL
   const handleTabChange = (value: string) => {
     router.push(`/wallet/${params.address}?tab=${value}`);
   };
