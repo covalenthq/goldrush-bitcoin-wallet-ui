@@ -3,16 +3,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoaderCircleIcon } from "lucide-react";
-import { GOLDRUSH_API_KEY } from "@/utils/constants/helpers";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export default function IndexPage() {
-  const [address, setAddress] = useState(
-    "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"
+  const [address, setAddress] = useState<string>(
+    "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
   );
-  const [busy, setBusy] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
@@ -50,7 +48,7 @@ export default function IndexPage() {
                   }}
                 />
                 <Button
-                  disabled={address.length === 0 || busy}
+                  disabled={address.length === 0}
                   type="submit"
                   className="w-28 mt-2"
                 >
