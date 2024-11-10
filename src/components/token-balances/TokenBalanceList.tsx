@@ -17,6 +17,7 @@ import { SortAscIcon, SortDescIcon, ArrowUpDownIcon } from "lucide-react";
 import { TableSkeleton } from "@/components/shared/table-skeleton";
 
 export function TokenBalancesList({ address }: { address: string }) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TS SDK Will have this once deployed
   const [tokenData, setTokenData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [sortField, setSortField] = useState<string>("");

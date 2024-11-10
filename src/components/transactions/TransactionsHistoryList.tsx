@@ -43,7 +43,7 @@ export function TransactionsHistoryList({
   const router = useRouter();
   const pageParam = searchParams.get("page");
   const pageSizeParam = searchParams.get("pageSize");
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TS SDK Will have this once deployed
   const [transactionData, setTransactionData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [sortField, setSortField] = useState<string>("");
