@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://goldrush.dev/products/goldrush/"  target="_blank" rel="noopener noreferrer">
-    <img alt="GoldRush Bitcoin Wallet UI - powered by Covalent" src="./repo-static/goldrush-bitcoin-wallet-ui-banner.png" style="max-width: 100%;"/>
+    <img alt="GoldRush Bitcoin Wallet & Portfolio UI - powered by Covalent" src="./repo-static/goldrush-bitcoin-wallet-ui-banner.png" style="max-width: 100%;"/>
   </a>
   <br />
 
@@ -16,10 +16,10 @@
 
 <br/>
 
-<h1 align="center">Bitcoin Wallet Balance and Transactions template.</h1>
+<h1 align="center">Bitcoin Wallet & Portfolio UI template.</h1>
 
 <div align="center">
-Powered by <span><a href="https://github.com/covalenthq/goldrush-kit">GoldRush Kit.</a></span> Open-source. Customizable. 100+ Chains.
+Powered by <span><a href="https://github.com/covalenthq/goldrush-kit">GoldRush Kit.</a></span> Open-source. Customizable.
 </div>
 
 ## Ready-to-use customizable template
@@ -30,9 +30,9 @@ Powered by <span><a href="https://github.com/covalenthq/goldrush-kit">GoldRush K
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcovalenthq%2Fgoldrush-bitcoin-wallet-ui&env=NEXT_PUBLIC_GOLDRUSH_API_KEY&envDescription=Visit%20Covalent%20to%20sign%20up%20for%20an%20API%20key&envLink=https%3A%2F%2Fwww.covalenthq.com%2Fplatform%2Fauth%2Fregister%2F)
 
-## Creating your own GoldRush Bitcoin Wallet UI
+## Creating your own GoldRush Bitcoin Wallet & Portfolio UI
 
-The GoldRush Bitcoin Wallet UI is a Template Repository. It can be cloned and modified as per different specific use cases.
+The GoldRush Bitcoin Wallet & Portfolio UI is a Template Repository. It can be cloned and modified as per different specific use cases.
 
 1.  **Fork Repository**: Fork the repository either by clicking the `Use this template` at the top of the repository or clicking [here](https://github.com/new?owner=covalenthq&template_name=goldrush-bitcoin-wallet-ui&template_owner=covalenthq)
 
@@ -54,7 +54,7 @@ The GoldRush Bitcoin Wallet UI is a Template Repository. It can be cloned and mo
     npm run dev
     ```
 
-3.  **Deployment**: Once forked, a use specific can be created. The **GoldRush Bitcoin Wallet UI** is powered on the frontend completely using NextJS. Natively, the it is deployed on [Vercel](https://vercel.com/), however any other deployment or server hosting tools such as Netlify, AWS, DigitalOcean can be used.
+3.  **Deployment**: Once forked, a use specific can be created. The **GoldRush Bitcoin Wallet & Portfolio UI** is powered on the frontend completely using NextJS. Natively, the it is deployed on [Vercel](https://vercel.com/), however any other deployment or server hosting tools such as Netlify, AWS, DigitalOcean can be used.
 
 ## Customizing the Deployment
 
@@ -66,7 +66,7 @@ import { type GRKKitType } from "@/utils/types/shared.types";
 export const GRKKit: GRKKitType = {
   brand: {
     title: "GoldRush",
-    subtitle: "Bitcoin Wallet UI",
+    subtitle: "Bitcoin Wallet & Portfolio UI",
     logo_url: "/goldrush-logo.png",
     github: "https://github.com/covalenthq/goldrush-bitcoin-wallet-ui",
   },
@@ -98,7 +98,7 @@ export default GRKKit;
     <img src="./repo-static/3.1.png">
 
     1. **title**: It is the first line of your brand. By default, it is set as `GoldRush`.
-    2. **subtitle**: It is the second line of your brand. By default, it is set as `Bitcoin Wallet UI`.
+    2. **subtitle**: It is the second line of your brand. By default, it is set as `Bitcoin Wallet & Portfolio UI`.
     3. **logo_url**: It is the logo of your brand. By default, it is renders the GoldRush Logo. An image src of 40x40px is recommended for this.
     4. **github**: It is the GitHub URL of your repository.
 
@@ -109,7 +109,7 @@ export default GRKKit;
 1. Real-time Wallet Details: Provides up-to-date information on bitcoin transactions, and balances in real time, giving users the latest data.
 2. Ready-to-use customizable template: Jumpstart your dApp journey with a beautifully designed UI that’s both intuitive and engaging.
 3. HD and Non-HD Address Support: Supports both HD and Non-HD bitcoin addresses.
-5. UI Template: The GoldRush Bitcoin Wallet UI can be customized with different colors and modes per deployment.
+5. UI Template: The GoldRush Bitcoin Wallet & Portfolio UI can be customized with different colors and modes per deployment.
 
 ## Contributing
 

@@ -3,7 +3,7 @@ import { type GRKKitType } from "@/utils/types/shared.types";
 export const GRKKit: GRKKitType = {
   brand: {
     title: "GoldRush",
-    subtitle: "Bitcoin Wallet UI",
+    subtitle: "Bitcoin Wallet & Portfolio UI",
     logo_url: "/goldrush-logo.png",
     github: "https://github.com/covalenthq/goldrush-bitcoin-wallet-ui",
   },
