@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://goldrush.dev/products/goldrush/"  target="_blank" rel="noopener noreferrer">
-    <img alt="GoldRush Bitcoin Wallet & Portfolio UI - powered by Covalent" src="./repo-static/goldrush-bitcoin-wallet-ui-banner.png" style="max-width: 100%;"/>
+    <img alt="GoldRush Bitcoin Wallet & Portfolio UI template - powered by Covalent" src="./repo-static/goldrush-bitcoin-wallet-ui-template-banner.png" style="max-width: 100%;"/>
   </a>
   <br />
 
@@ -15,55 +15,48 @@
 </div>
 
 <br/>
-
-<h1 align="center">Bitcoin Wallet & Portfolio UI template.</h1>
+<h1 align="center">Beautifully designed Bitcoin Wallet & Portfolio UI template template.</h1>
 
 <div align="center">
-Powered by <span><a href="https://github.com/covalenthq/goldrush-kit">GoldRush Kit.</a></span> Open-source. Customizable.
+Powered by <span><a href="https://github.com/covalenthq/goldrush-kit">GoldRush UI Kit.</a></span> Open-source & Customizable.
 </div>
 
-## Ready-to-use customizable template
+## View Live Template
 
-<a href="https://goldrush-bitcoin-wallet-ui.vercel.app/">View live template</a>
+<a href="https://goldrush-bitcoin-wallet-ui.vercel.app/">https://goldrush-bitcoin-wallet-ui.vercel.app</a>
 
-## One-click Deploy
+Explore a live deployment of the template, showcasing its features and UI components in action.
+
+## One-Click Deploy
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcovalenthq%2Fgoldrush-bitcoin-wallet-ui&env=NEXT_PUBLIC_GOLDRUSH_API_KEY&envDescription=Visit%20Covalent%20to%20sign%20up%20for%20an%20API%20key&envLink=https%3A%2F%2Fwww.covalenthq.com%2Fplatform%2Fauth%2Fregister%2F)
 
-## Creating your own GoldRush Bitcoin Wallet & Portfolio UI
+Quickly create your own deployment on Vercel with one click. This will set up a clone of the template, ready to be customized. This will also be unlinked from the original template.
 
-The GoldRush Bitcoin Wallet & Portfolio UI is a Template Repository. It can be cloned and modified as per different specific use cases.
+> Note: You will need your [GoldRush API key](https://goldrush.dev/platform/apikey) to set the `NEXT_PUBLIC_GOLDRUSH_API_KEY` environment variable.
 
-1.  **Fork Repository**: Fork the repository either by clicking the `Use this template` at the top of the repository or clicking [here](https://github.com/new?owner=covalenthq&template_name=goldrush-bitcoin-wallet-ui&template_owner=covalenthq)
+## Local Setup
 
-2.  **Setup**:
+This repo is set up as a _public template_ so you can either **Fork** to create a linked repo to pull in updates, or select **Use this template** to create an unlinked copy that will not inherit any issues, PRs or updates from the original.
 
-    1. Install package dependencies using `npm install`.
+1. Install package dependencies using: `npm install`.
+2. Create an `.env.local` in your root directory and add your [GoldRush API key](https://goldrush.dev/platform/apikey):
+   ```
+   NEXT_PUBLIC_GOLDRUSH_API_KEY = "<YOUR_API_KEY>"
+   ```
+3. Run the template with:
+   ```
+   npm run dev
+   ```
 
-    2. Create [.env.local](./env.local) in your root directory and add your [GoldRush API Key](https://goldrush.dev/platform/apikey). Refer to [.env.example](./.env.example) for the a list of all the environmental variables used.
+## Customize
 
-    > Only the `NEXT_PUBLIC_GOLDRUSH_API_KEY` environmental key is mandatory.
-
-    ```
-    NEXT_PUBLIC_GOLDRUSH_API_KEY = "<YOUR_API_KEY>"
-    ```
-
-    3. To run the development server, type the following into your terminal.
-
-    ```
-    npm run dev
-    ```
-
-3.  **Deployment**: Once forked, a use specific can be created. The **GoldRush Bitcoin Wallet & Portfolio UI** is powered on the frontend completely using NextJS. Natively, the it is deployed on [Vercel](https://vercel.com/), however any other deployment or server hosting tools such as Netlify, AWS, DigitalOcean can be used.
-
-## Customizing the Deployment
-
-The forked deployment can be customized for every deployment using the [GoldRush Config File](./goldrush.config.ts). The config file exports TypeScript powered const `goldrushConfig`. By default the config file will look like this
+This template can be quickly customized from `goldrush.config.ts`. By default, it looks like:
 
 ```ts
-import { type GRKKitType } from "@/utils/types/shared.types";
+import { type GoldRushConfig } from "@/utils/types/shared.types";
 
-export const GRKKit: GRKKitType = {
+export const goldrushConfig: GoldRushConfig = {
   brand: {
     title: "GoldRush",
     subtitle: "Bitcoin Wallet & Portfolio UI",
@@ -88,37 +81,37 @@ export const GRKKit: GRKKitType = {
     },
     mode: "light",
   },
+  gtag_id: process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || null,
 };
 
-export default GRKKit;
+export default goldrushConfig;
 ```
 
-1. **brand**: This is the customization of the `nav` bar that is rendered at the top of every page. It looks this by default
+1. `brand`: This objects sets the title and logo in the top left `nav` bar.
 
-    <img src="./repo-static/3.1.png">
+   <img src="./repo-static/brand-example.png">
 
-    1. **title**: It is the first line of your brand. By default, it is set as `GoldRush`.
-    2. **subtitle**: It is the second line of your brand. By default, it is set as `Bitcoin Wallet & Portfolio UI`.
-    3. **logo_url**: It is the logo of your brand. By default, it is renders the GoldRush Logo. An image src of 40x40px is recommended for this.
-    4. **github**: It is the GitHub URL of your repository.
+   A 40x40px logo size is recommended.
 
-2. **theme**: This is an extension of the theme config passed to the [GoldRush Kit](https://github.com/covalenthq/goldrush-kit). Explore these theme settings from [here](https://goldrush-kit.vercel.app/?path=/story/theme-config--theme-config).
+2. `theme`: This object is an extension of the [GoldRush UI Kit](https://github.com/covalenthq/goldrush-kit) theme config. Explore the theme settings [here](https://goldrush-kit.vercel.app/?path=/story/theme-config--theme-config).
+
+3. **gtag_id**: This is an optional [Google Analytics](https://developers.google.com/analytics) tag ID (format; `G-**********`) for tracking traffic to your Block Explorer.
 
 ## Features
 
-1. Real-time Wallet Details: Provides up-to-date information on bitcoin transactions, and balances in real time, giving users the latest data.
-2. Ready-to-use customizable template: Jumpstart your dApp journey with a beautifully designed UI that’s both intuitive and engaging.
-3. HD and Non-HD Address Support: Supports both HD and Non-HD bitcoin addresses.
-5. UI Template: The GoldRush Bitcoin Wallet & Portfolio UI can be customized with different colors and modes per deployment.
+1. **Real-time Wallet Details**: Provides up-to-date information on bitcoin transactions, and balances for a wallet address in real time, giving users the latest data.
+2. **Ready-to-use customizable template**: Jumpstart your dApp journey with a beautifully designed UI that’s both intuitive and engaging.
+3. **HD and Non-HD Address Support**: Supports both HD and Non-HD bitcoin addresses.
+5. **UI Template**: The GoldRush Bitcoin Wallet & Portfolio UI can be customized with different colors and modes per deployment.
 
 ## Contributing
 
 Contributions, issues and feature requests are welcome!
-Feel free to check [issues](https://github.com/covalenthq/goldrush-bitcoin-wallet-ui/issues) page.
+Feel free to check the [issues](https://github.com/covalenthq/goldrush-bitcoin-wallet-ui/issues) page.
 
-## Show your support
+## Show Your Support
 
-Give a ⭐️ if this project helped you!
+Give us a ⭐️ if this project helps you!
 
 ## License
 

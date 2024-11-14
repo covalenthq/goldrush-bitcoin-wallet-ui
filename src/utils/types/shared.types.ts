@@ -1,7 +1,7 @@
 import { type Chain } from "@covalenthq/client-sdk";
 import { type GoldRushThemeMode } from "@covalenthq/goldrush-kit";
 
-export interface GRKKitType {
+export interface GoldRushConfig {
   theme: {
     borderRadius: number;
     colors: {
@@ -27,6 +27,7 @@ export interface GRKKitType {
     github: string;
   };
   chains?: Chain[];
+  gtag_id: string | null;
 }
 
 export interface NavItem {
