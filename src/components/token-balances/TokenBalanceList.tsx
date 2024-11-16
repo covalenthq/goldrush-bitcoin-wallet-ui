@@ -10,18 +10,26 @@ import { GOLDRUSH_API_KEY } from "@/utils/constants/helpers";
 import {
   calculatePercentageChange,
   getAddressType,
+  minifyAddress,
 } from "@/utils/functions/helper";
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { SortAscIcon, SortDescIcon, ArrowUpDownIcon } from "lucide-react";
+import {
+  SortAscIcon,
+  SortDescIcon,
+  ArrowUpDownIcon,
+  CopyIcon,
+} from "lucide-react";
 import { TableSkeleton } from "@/components/shared/table-skeleton";
+import { useToast } from "../ui/use-toast";
 
 export function TokenBalancesList({ address }: { address: string }) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TS SDK Will have this once deployed
   const [tokenData, setTokenData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [sortField, setSortField] = useState<string>("");
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  const [sortField, setSortField] = useState<string>("balance");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+  const { toast } = useToast();
 
   useEffect(() => {
     const fetchWalletBalance = async () => {
@@ -54,7 +62,10 @@ export function TokenBalancesList({ address }: { address: string }) {
       const fieldA = a[sortField];
       const fieldB = b[sortField];
 
-      if (typeof fieldA === "number" && typeof fieldB === "number") {
+      if (
+        (typeof fieldA === "number" && typeof fieldB === "number") ||
+        sortField === "balance"
+      ) {
         return sortOrder === "asc" ? fieldA - fieldB : fieldB - fieldA;
       } else if (typeof fieldA === "string" && typeof fieldB === "string") {
         return sortOrder === "asc"
@@ -86,6 +97,8 @@ export function TokenBalancesList({ address }: { address: string }) {
     <Table>
       <TableHeader>
         <TableRow>
+          {getAddressType(address) === "HD" &&
+            TableHeadRender("child_address", "Child Address")}
           {TableHeadRender("contract_display_name", "Token")}
           {TableHeadRender("quote_rate", "Price")}
           {TableHeadRender("balance", "Balance")}
@@ -95,10 +108,37 @@ export function TokenBalancesList({ address }: { address: string }) {
       </TableHeader>
       <TableBody>
         {loading ? (
-          <TableSkeleton length={5} />
+          <TableSkeleton length={getAddressType(address) === "HD" ? 6 : 5} />
+        ) : sortedData.length === 0 ? (
+          <>
+            <TableRow>
+              <TableCell colSpan={7} className="text-center">
+                No Transactions Found
+              </TableCell>
+            </TableRow>
+          </>
         ) : (
           sortedData.map((tokenDetails) => (
             <TableRow key={tokenDetails.child_address}>
+              {getAddressType(address) === "HD" && (
+                <TableCell>
+                  <div className="flex items-center gap-1">
+                    {minifyAddress(tokenDetails.child_address)}
+                    <CopyIcon
+                      className="h-3 w-3 text-foreground-light dark:text-foreground-dark cursor-pointer"
+                      onClick={() => {
+                        toast({
+                          title: "Address Copied",
+                          description: "The address has been copied",
+                        });
+                        navigator.clipboard.writeText(
+                          tokenDetails.child_address
+                        );
+                      }}
+                    />
+                  </div>
+                </TableCell>
+              )}
               <TableCell className="flex items-center gap-2">
                 <Image
                   src={tokenDetails.logo_url}
