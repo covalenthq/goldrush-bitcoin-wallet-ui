@@ -49,7 +49,7 @@ const WalletDashboard = ({
 
   return (
     <Tabs value={initialTab} onValueChange={handleTabChange}>
-      <div className="flex w-full container items-start gap-4">
+      <div className="flex w-full container items-start gap-4 pb-20">
         <div className="flex flex-col gap-8">
           <AddressCard address={params.address} avatar={{}} />
           <TabsList className="flex flex-col items-start w-full gap-2">

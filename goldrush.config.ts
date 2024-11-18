@@ -1,9 +1,9 @@
-import { type GRKKitType } from "@/utils/types/shared.types";
+import { type GoldRushConfig } from "@/utils/types/shared.types";
 
-export const GRKKit: GRKKitType = {
+export const goldrushConfig: GoldRushConfig = {
   brand: {
     title: "GoldRush",
-    subtitle: "Bitcoin Wallet UI",
+    subtitle: "Bitcoin Wallet & Portfolio UI",
     logo_url: "/goldrush-logo.png",
     github: "https://github.com/covalenthq/goldrush-bitcoin-wallet-ui",
   },
@@ -25,6 +25,7 @@ export const GRKKit: GRKKitType = {
     },
     mode: "light",
   },
+  gtag_id: process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? null,
 };
 
-export default GRKKit;
+export default goldrushConfig;

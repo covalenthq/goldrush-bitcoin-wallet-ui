@@ -164,6 +164,14 @@ export function TransactionsHistoryList({
         <TableBody>
           {loading ? (
             <TableSkeleton length={7} />
+          ) : sortedData.length === 0 ? (
+            <>
+              <TableRow>
+                <TableCell colSpan={7} className="text-center">
+                  No Transactions Found
+                </TableCell>
+              </TableRow>
+            </>
           ) : (
             sortedData.map((txn_details) => (
               <TableRow key={txn_details.tx_hash}>
@@ -222,71 +230,73 @@ export function TransactionsHistoryList({
         </TableBody>
       </Table>
 
-      <div className="flex justify-between mt-4 w-full">
-        <div className="mb-4">
-          <Select
-            onValueChange={(value) => handlePageSizeChange(parseInt(value))}
-            defaultValue={pageSize.toString()}
-          >
-            <SelectTrigger className="w-48">
-              <SelectValue placeholder="Page Size" />
-            </SelectTrigger>
-            <SelectContent className="bg-background-light dark:bg-background-dark">
-              {["5", "10", "20", "30", "50"].map((size) => (
-                <SelectItem
-                  key={size}
-                  value={size}
-                  className="hover:bg-primary-light hover:dark:bg-primary-dark"
-                >
-                  Items Per Page: {size}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <Pagination className="my-4 mx-0 justify-end">
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                onClick={() => {
-                  if (page > 1) {
-                    handlePageChange(page - 1);
-                  }
-                }}
-                isActive={page !== 1}
-              />
-            </PaginationItem>
-
-            {generatePagination().map((pg) =>
-              pg === "..." ? (
-                <PaginationItem key={pg}>
-                  <PaginationEllipsis />
-                </PaginationItem>
-              ) : (
-                <PaginationItem key={pg}>
-                  <PaginationLink
-                    isActive={pg === page}
-                    onClick={() => handlePageChange(Number(pg))}
+      {sortedData.length > 0 && (
+        <div className="flex justify-between mt-4 w-full">
+          <div className="mb-4">
+            <Select
+              onValueChange={(value) => handlePageSizeChange(parseInt(value))}
+              defaultValue={pageSize.toString()}
+            >
+              <SelectTrigger className="w-48">
+                <SelectValue placeholder="Page Size" />
+              </SelectTrigger>
+              <SelectContent className="bg-background-light dark:bg-background-dark">
+                {["5", "10", "20", "30", "50"].map((size) => (
+                  <SelectItem
+                    key={size}
+                    value={size}
+                    className="hover:bg-primary-light hover:dark:bg-primary-dark"
                   >
-                    {pg}
-                  </PaginationLink>
-                </PaginationItem>
-              )
-            )}
+                    Items Per Page: {size}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <Pagination className="my-4 mx-0 justify-end">
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  onClick={() => {
+                    if (page > 1) {
+                      handlePageChange(page - 1);
+                    }
+                  }}
+                  isActive={page !== 1}
+                />
+              </PaginationItem>
 
-            <PaginationItem>
-              <PaginationNext
-                onClick={() => {
-                  if (page < totalPages) {
-                    handlePageChange(page + 1);
-                  }
-                }}
-                isActive={page !== totalPages}
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </div>
+              {generatePagination().map((pg) =>
+                pg === "..." ? (
+                  <PaginationItem key={pg}>
+                    <PaginationEllipsis />
+                  </PaginationItem>
+                ) : (
+                  <PaginationItem key={pg}>
+                    <PaginationLink
+                      isActive={pg === page}
+                      onClick={() => handlePageChange(Number(pg))}
+                    >
+                      {pg}
+                    </PaginationLink>
+                  </PaginationItem>
+                )
+              )}
+
+              <PaginationItem>
+                <PaginationNext
+                  onClick={() => {
+                    if (page < totalPages) {
+                      handlePageChange(page + 1);
+                    }
+                  }}
+                  isActive={page !== totalPages}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
     </div>
   );
 }
